@@ -13,6 +13,7 @@ export default function Home() {
     >
       <View style={{ backgroundColor: 'white', padding: 15 }}>
         <HeaderTabs />
+        <SearchBar />
       </View>
     </SafeAreaView>
   )
