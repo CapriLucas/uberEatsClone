@@ -1,6 +1,8 @@
 import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView, ScrollView, StatusBar, View } from 'react-native'
+import { Divider } from 'react-native-elements/dist/divider/Divider'
+import BottomTabs from '../components/BottomTabs'
 import Categories from '../components/Categories'
 import HeaderTabs from '../components/HeaderTabs'
 import RestaurantItems from '../components/RestaurantItems'
@@ -48,6 +50,8 @@ export default function Home() {
         <Categories />
         <RestaurantItems restaurants={restaurantsData} />
       </ScrollView>
+      <Divider width={1} />
+      <BottomTabs />
     </SafeAreaView>
   )
 }
