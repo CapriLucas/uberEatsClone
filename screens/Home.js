@@ -2,11 +2,12 @@ import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView, ScrollView, StatusBar, View } from 'react-native'
 import { Divider } from 'react-native-elements/dist/divider/Divider'
-import BottomTabs from '../components/BottomTabs'
-import Categories from '../components/Categories'
-import HeaderTabs from '../components/HeaderTabs'
-import RestaurantItems from '../components/RestaurantItems'
-import SearchBar from '../components/SearchBar'
+import BottomTabs from '../components/home/BottomTabs'
+import Categories from '../components/home/Categories'
+import HeaderTabs from '../components/home/HeaderTabs'
+import RestaurantItems from '../components/home/RestaurantItems'
+import SearchBar from '../components/home/SearchBar'
+
 
 const YELP_API_KEY =
 export default function Home() {
