@@ -15,6 +15,10 @@ export default function Home() {
         <HeaderTabs />
         <SearchBar />
       </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Categories />
+        <RestaurantItems restaurants={restaurantsData} />
+      </ScrollView>
     </SafeAreaView>
   )
 }
