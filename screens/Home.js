@@ -22,17 +22,11 @@ export default function Home() {
       headers: { Authorization: `Bearer ${YELP_API_KEY}` },
     })
       .then((res) => res.data.businesses)
-      .then((businesses) =>
-        setRestaurantsData(
-          businesses.filter((business) =>
-            business.transactions.includes(activeTab.toLowerCase())
-          )
-        )
-      )
+      .then((businesses) => setRestaurantsData(businesses))
   }
 
   useEffect(() => {
-    getRestaurantsFromYelp().catch((err) => console.log('error'))
+    getRestaurantsFromYelp().catch((err) => console.log('error: '))
   }, [city, activeTab])
 
   return (
