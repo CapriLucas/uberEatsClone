@@ -8,7 +8,7 @@ export default function SearchBar({ cityHandler }) {
   return (
     <View style={{ marginTop: 10, flexDirection: 'row' }}>
       <GooglePlacesAutocomplete
-        query={{ key: 'AIzaSyAJPPJRioEfp4T2TyU241yJOB5564b42GU' }}
+        query={{ key: GOOGLE_API_KEY }}
         onPress={(data, _) => cityHandler(data.description)}
         placeholder="search"
         styles={{
