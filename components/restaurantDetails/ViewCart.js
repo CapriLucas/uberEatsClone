@@ -5,9 +5,11 @@ import { useSelector } from 'react-redux'
 import OrderItem from './OrderItem'
 import { app } from '../../firebase'
 import 'firebase/firestore'
+import LottieView from 'lottie-react-native'
 
 export default function ViewCart({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const { items, restaurantName } = useSelector(
     (state) => state.cartReducer.selectedItems
@@ -20,6 +22,7 @@ export default function ViewCart({ navigation }) {
 
   const addOrderToFireBase = () => {
     const db = app.firestore()
+    setLoading(true)
     db.collection('orders')
       .add({
         items,
@@ -27,7 +30,7 @@ export default function ViewCart({ navigation }) {
         createdAt: new Date().toISOString(),
       })
       .then(() => {
-        setModalVisible(false)
+        setLoading(false)
         navigation.navigate('OrderCompleted')
       })
   }
@@ -89,7 +92,10 @@ export default function ViewCart({ navigation }) {
                   width: 250,
                   position: 'relative',
                 }}
-                onPress={() => addOrderToFireBase()}
+                onPress={() => {
+                  addOrderToFireBase()
+                  setModalVisible(false)
+                }}
               >
                 <Text style={{ color: 'white', fontSize: 16 }}>Checkout</Text>
               </TouchableOpacity>
@@ -160,6 +166,26 @@ export default function ViewCart({ navigation }) {
           </View>
         </View>
       ) : null}
+      {loading && (
+        <View
+          style={{
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'black',
+            position: 'absolute',
+            opacity: 0.6,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <LottieView
+            style={{ height: 200 }}
+            source={require('../../assets/animations/scanner.json')}
+            autoPlay
+            speed={3}
+          />
+        </View>
+      )}
     </>
   )
 }
