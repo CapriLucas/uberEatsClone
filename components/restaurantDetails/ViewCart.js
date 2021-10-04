@@ -6,7 +6,7 @@ import OrderItem from './OrderItem'
 import { app } from '../../firebase'
 import 'firebase/firestore'
 
-export default function ViewCart() {
+export default function ViewCart({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false)
 
   const { items, restaurantName } = useSelector(
@@ -26,7 +26,10 @@ export default function ViewCart() {
         restaurantName,
         createdAt: new Date().toISOString(),
       })
-      .then(() => setModalVisible(false))
+      .then(() => {
+        setModalVisible(false)
+        navigation.navigate('OrderCompleted')
+      })
   }
 
   const styles = StyleSheet.create({
