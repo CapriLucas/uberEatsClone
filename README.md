@@ -1,3 +1,11 @@
+# TODOs
+
+- Refactor all styles on purpose to watch friendlier components
+- Check all fontWeights. There are some bugs with react native and android font weights
+- Bug al tratar de agregar al carrito el plato de abajo de todo
+- Ajustar styles de view cart
+- Modal de view cart no ocupa el 100% de height
+
 # My Universal React Project
 
 <p>
